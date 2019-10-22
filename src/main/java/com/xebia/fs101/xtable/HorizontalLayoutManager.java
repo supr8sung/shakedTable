@@ -2,60 +2,60 @@ package com.xebia.fs101.xtable;
 
 import java.util.List;
 
+import static com.xebia.fs101.xtable.TableConstants.*;
+
 public class HorizontalLayoutManager implements LayoutManager {
 
     private int tableWidth;
     private int rowCount;
     private int colCount;
     private int colWidth;
-    public static final String ANSI_RED = "\u001B[31m";
+    private final int START_POSITION = 1;
 
 
     HorizontalLayoutManager(int rowCount, int colCount) {
-
         this.rowCount = rowCount;
         this.colCount = colCount;
-
     }
 
     @Override
     public String createDataTable(List<String[]> rows) {
 
-        colWidth = computeWidth(rows) + 2;
+        colWidth = computeWidth(rows) + PADDING;
         tableWidth = colWidth * colCount;
-        return this.createTopLine() + this.createTabularStruct(rows) + this.createBottomLine();
+        return this.createTopLine() + this.createTableStructure(rows) + this.createBottomLine();
     }
 
     @Override
     public String createTable() {
 
-        tableWidth = TableConstants.maxColWidth * colCount;
-        colWidth = TableConstants.maxColWidth;
-        return this.createTopLine() + this.createTabularStruct() + this.createBottomLine();
+        tableWidth = MAX_COL_WIDTH * colCount;
+        colWidth = MAX_COL_WIDTH;
+        return this.createTopLine() + this.createTableStructure() + this.createBottomLine();
 
     }
 
 
     @Override
-    public String createTableWithOnlyHeaders(String[] headers) {
+    public String createTableWithHeadersOnly(String[] headers) {
 
-        colWidth = computeWidth(headers) + 2;
+        colWidth = computeWidth(headers) + PADDING;
         tableWidth = colWidth * colCount;
-        return this.createTopLine() + this.createTabularStruct(headers) + this.createBottomLine();
+        return this.createTopLine() + this.createTableStructure(headers) + this.createBottomLine();
 
     }
 
     private String createTopLine() {
         StringBuilder top = new StringBuilder();
         for (int i = 1; i <= tableWidth; i++) {
-            if (i == 1)
-                top.append(TableConstants.topLeft);
+            if (i == START_POSITION)
+                top.append(TOP_LEFT);
             if (i == tableWidth)
-                top.append(TableConstants.topRight);
+                top.append(TOP_RIGHT);
             else if (i % colWidth == 0)
-                top.append(TableConstants.topMiddle);
+                top.append(TOP_MIDDLE);
             else
-                top.append(TableConstants.mid);
+                top.append(MID);
         }
         return top.toString();
 
@@ -65,43 +65,43 @@ public class HorizontalLayoutManager implements LayoutManager {
         StringBuilder bottom = new StringBuilder();
         bottom.append("\n");
         for (int i = 1; i <= tableWidth; i++) {
-            if (i == 1)
-                bottom.append(TableConstants.bottomLeft);
+            if (i == START_POSITION)
+                bottom.append(BOTTOM_LEFT);
             if (i == tableWidth)
-                bottom.append(TableConstants.bottomRight);
+                bottom.append(BOTTOM_RIGHT);
             else if (i % colWidth == 0)
-                bottom.append(TableConstants.bottomMiddle);
+                bottom.append(BOTTOM_MIDDLE);
             else
-                bottom.append(TableConstants.mid);
+                bottom.append(MID);
         }
         return bottom.toString();
     }
 
     private String createRowSeparator() {
         StringBuilder rowSeparator = new StringBuilder();
-        rowSeparator.append("\n" + TableConstants.leftMid);
+        rowSeparator.append("\n" + LEFT_MID);
         for (int i = 1; i < tableWidth; i++) {
             if (i % colWidth == 0)
-                rowSeparator.append(TableConstants.midMid);
+                rowSeparator.append(MID_MID);
             else
-                rowSeparator.append(TableConstants.mid);
+                rowSeparator.append(MID);
         }
-        rowSeparator.append(TableConstants.rightMid);
+        rowSeparator.append(RIGHT_MID);
         return rowSeparator.toString();
     }
 
-    private String createTabularStruct() {
+    private String createTableStructure() {
         StringBuilder tableData = new StringBuilder();
 
         for (int j = 1; j <= rowCount; j++) {
-            tableData.append("\n" + TableConstants.verticalSeparator);
+            tableData.append("\n" + VERTICAL_SEPARATOR);
             for (int i = 1; i < tableWidth; i++) {
                 if (i % colWidth == 0)
-                    tableData.append(TableConstants.verticalSeparator);
+                    tableData.append(VERTICAL_SEPARATOR);
                 else
                     tableData.append(" ");
             }
-            tableData.append(TableConstants.verticalSeparator);
+            tableData.append(VERTICAL_SEPARATOR);
             if (j == rowCount)
                 break;
             tableData.append(createRowSeparator());
@@ -111,9 +111,9 @@ public class HorizontalLayoutManager implements LayoutManager {
 
     }
 
-    private String createTabularStruct(String[] headers) {
+    private String createTableStructure(String[] headers) {
         StringBuilder tableHeader = new StringBuilder();
-        tableHeader.append("\n" + TableConstants.verticalSeparator);
+        tableHeader.append("\n" + VERTICAL_SEPARATOR);
         for (int j = 0; j < headers.length; j++) {
             for (int k = 0; k < colWidth; ) {
                 tableHeader.append(" ").append(headers[j]);
@@ -122,19 +122,19 @@ public class HorizontalLayoutManager implements LayoutManager {
                     tableHeader.append(" ");
                     k++;
                 }
-                tableHeader.append(TableConstants.verticalSeparator);
+                tableHeader.append(VERTICAL_SEPARATOR);
             }
         }
         tableHeader.append(createRowSeparator());
         for (int j = 1; j <= rowCount; j++) {
-            tableHeader.append("\n" + TableConstants.verticalSeparator);
+            tableHeader.append("\n" + VERTICAL_SEPARATOR);
             for (int i = 1; i < tableWidth; i++) {
                 if (i % colWidth == 0)
-                    tableHeader.append(TableConstants.verticalSeparator);
+                    tableHeader.append(VERTICAL_SEPARATOR);
                 else
                     tableHeader.append(" ");
             }
-            tableHeader.append(TableConstants.verticalSeparator);
+            tableHeader.append(VERTICAL_SEPARATOR);
             if (j == rowCount - 1)
                 break;
             tableHeader.append(createRowSeparator());
@@ -147,22 +147,22 @@ public class HorizontalLayoutManager implements LayoutManager {
 
     }
 
-    private String createTabularStruct(List<String[]> rows) {
+    private String createTableStructure(List<String[]> rows) {
         StringBuilder tableData = new StringBuilder();
         for (int i = 0; i < rowCount; i++) {
-            tableData.append("\n" + TableConstants.verticalSeparator);
+            tableData.append("\n" + VERTICAL_SEPARATOR);
             String[] cells = rows.get(i);
             for (int j = 0; j < cells.length; j++) {
                 for (int k = 0; k < colWidth; ) {
                     tableData.append(" ").append(cells[j]);
-                    k = k + cells[j].length() + 2;
+                    k = k + cells[j].length() + PADDING;
                     while (k < colWidth) {
                         tableData.append(" ");
                         k++;
                     }
 
                 }
-                tableData.append(TableConstants.verticalSeparator);
+                tableData.append(VERTICAL_SEPARATOR);
             }
             if (i == rowCount - 1)
                 break;
