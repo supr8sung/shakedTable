@@ -15,6 +15,7 @@ public final class TableConstants {
     public static final int MAX_COL_WIDTH = 20;
     public static final int PADDING = 2;
 
+
     private TableConstants() {
 
     }

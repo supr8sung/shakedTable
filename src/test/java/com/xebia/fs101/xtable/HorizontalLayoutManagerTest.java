@@ -11,7 +11,7 @@ public class HorizontalLayoutManagerTest {
 
     @Test
     public void should_create_table_empty_table_with_passed_rows_and_cols() {
-        HorizontalLayoutManager horizontalLayoutManager = new HorizontalLayoutManager(1, 2);
+        LayoutManager horizontalLayoutManager = new HorizontalLayoutManager(1, 2);
         String actualResult = horizontalLayoutManager.createTable();
         String expectedResult =
                         "┌───────────────────┬───────────────────┐\n" +
@@ -22,7 +22,7 @@ public class HorizontalLayoutManagerTest {
 
     @Test
     public void should_create_table_with_header() {
-        HorizontalLayoutManager horizontalLayoutManager = new HorizontalLayoutManager(2, 3);
+        LayoutManager horizontalLayoutManager = new HorizontalLayoutManager(2, 3);
         String[] headers = {"one", "two", "three"};
         String actualResult = horizontalLayoutManager.createTableWithHeadersOnly(headers);
         String expectedResult =
@@ -36,7 +36,7 @@ public class HorizontalLayoutManagerTest {
 
     @Test
     public void should_create_table_with_data_rows() {
-        HorizontalLayoutManager horizontalLayoutManager = new HorizontalLayoutManager(4, 3);
+        LayoutManager horizontalLayoutManager = new HorizontalLayoutManager(4, 3);
         String[] row1 = {"one", "two", "three"};
         String[] row2 = {"test", "logic", "user"};
         String[] row3 = {"assumption", "great", "reflection"};
