@@ -1,15 +1,26 @@
 package com.xebia.fs101.xtable;
 
+import com.xebia.fs101.xtable.layout_manager.HorizontalLayout;
+import com.xebia.fs101.xtable.layout_manager.LayoutTemplate;
+import com.xebia.fs101.xtable.layout_manager.TableLayout;
+import com.xebia.fs101.xtable.layout_manager.TableLayoutFactory;
+import com.xebia.fs101.xtable.renderer.ConsoleBaseRenderer;
+import com.xebia.fs101.xtable.renderer.Renderer;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.xebia.fs101.xtable.layout_manager.TableLayout.HORIZONTAL;
 
 public class Table {
 
     private int rowCount;
     private int colCount;
-    private LayoutManager layoutManager;
+    private LayoutTemplate layoutTemplate;
     private Renderer renderer;
     private String[] headers;
     private List<String[]> rows;
+    private int[] columnWidth;
 
 
     private Table(Builder builder) {
@@ -18,7 +29,11 @@ public class Table {
         renderer = new ConsoleBaseRenderer();
         rows = builder.rows;
         headers = builder.headers;
-        layoutManager = builder.layoutManager;
+        if(builder.layoutTemplate==null)
+             layoutTemplate=builder.withLayoutOption(HORIZONTAL).layoutTemplate;
+        else
+            layoutTemplate = builder.layoutTemplate;
+        columnWidth = builder.columnWidth;
     }
 
     public void render() {
@@ -29,37 +44,27 @@ public class Table {
         return rowCount + " rows X " + colCount + " cols";
     }
 
-
     public String generate() {
-
-        if (headers != null || rows != null) {
-            if (headers != null && rows != null) {
-                rows.add(0, headers);
-                return layoutManager.createDataTable(rows);
-            } else if (headers != null && rows == null) {
-                return layoutManager.createTableWithHeadersOnly(headers);
-            } else {
-
-                return layoutManager.createDataTable(rows);
-            }
-
-        } else
-
-            return layoutManager.createTable();
-
+        return layoutTemplate.createTable(rows);
     }
 
     public static final class Builder {
 
         private int rowCount;
         private int colCount;
-        private LayoutManager layoutManager;
+        private LayoutTemplate layoutTemplate;
         private Renderer renderer;
         private List<String[]> rows;
         private String[] headers;
-        private TableLayoutFactory tableLayoutFactory;
+        private int[] columnWidth;
+
 
         public Builder() {
+        }
+
+        public Builder withColumnWidth(int[] val) {
+            columnWidth = val;
+            return this;
         }
 
         public Builder withRowCount(int val) {
@@ -74,6 +79,8 @@ public class Table {
 
         public Builder withHeader(String[] val) {
             headers = val;
+            rows = new ArrayList<>();
+            rows.add(headers);
             return this;
         }
 
@@ -87,26 +94,17 @@ public class Table {
             return this;
         }
 
-        public Builder withHorizontalLayoutManger() {
-            tableLayoutFactory = new TableLayoutFactory();
-            layoutManager = tableLayoutFactory.getLayoutManager(TableLayout.HORIZONTAL, rowCount, colCount);
-            return this;
-
-        }
-
-        public Builder withVerticalLayoutManger() {
-            tableLayoutFactory = new TableLayoutFactory();
-            layoutManager = tableLayoutFactory.getLayoutManager(TableLayout.VERTICAL, rowCount, colCount);
+        public Builder withLayoutOption(TableLayout tableLayout) {
+            if (columnWidth != null && columnWidth.length > 0)
+                layoutTemplate = TableLayoutFactory.getLayoutManager(tableLayout, rowCount, colCount, columnWidth);
+            else
+                layoutTemplate = TableLayoutFactory.getLayoutManager(tableLayout, rowCount, colCount);
             return this;
         }
-
 
         public Table build() {
             return new Table(this);
         }
-
-
     }
-
 
 }

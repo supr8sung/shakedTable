@@ -1,4 +1,4 @@
-package com.xebia.fs101.xtable;
+package com.xebia.fs101.xtable.layout_manager;
 
 public final class TableConstants {
     public static final String VERTICAL_SEPARATOR = "│";
@@ -13,7 +13,8 @@ public final class TableConstants {
     public static final String RIGHT_MID = "┤";
     public static final String MID_MID = "┼";
     public static final int MAX_COL_WIDTH = 20;
-    public static final int PADDING = 2;
+    public static final String TRUNCATING_CHARACTERS = "..";
+    public static final String SPACING_CHARACTERS = " ";
 
 
     private TableConstants() {

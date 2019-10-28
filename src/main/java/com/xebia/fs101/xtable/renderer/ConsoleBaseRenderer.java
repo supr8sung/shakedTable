@@ -1,4 +1,4 @@
-package com.xebia.fs101.xtable;
+package com.xebia.fs101.xtable.renderer;
 
 public class ConsoleBaseRenderer implements Renderer {
     @Override
