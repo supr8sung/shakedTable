@@ -1,10 +1,21 @@
 package com.xebia.fs101.xtable.layout_manager;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static com.xebia.fs101.xtable.layout_manager.TableConstants.*;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.BOTTOM_LEFT;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.BOTTOM_MIDDLE;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.BOTTOM_RIGHT;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.LEFT_MID;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.MAX_COL_WIDTH;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.MID;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.MID_MID;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.RIGHT_MID;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.SPACING_CHARACTERS;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.TOP_LEFT;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.TOP_MIDDLE;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.TOP_RIGHT;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.TRUNCATING_CHARACTERS;
+import static com.xebia.fs101.xtable.layout_manager.TableConstants.VERTICAL_SEPARATOR;
 
 public abstract class LayoutTemplate {
     protected int rowCount;
@@ -14,11 +25,13 @@ public abstract class LayoutTemplate {
 
 
     public final String createTable(List<String[]> rows) {
-        rows= initializeRows(rows);
+        rows = initializeRows(rows);
         validate(rows);
         return this.createTopLine() + this.createTableStructure(rows) + this.createBottomLine();
     }
+
     protected abstract void validate(List<String[]> rows);
+
     protected abstract String createTableStructure(List<String[]> rows);
 
     protected abstract List<String[]> initializeRows(List<String[]> rows);
