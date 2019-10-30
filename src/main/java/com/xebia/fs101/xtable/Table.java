@@ -1,6 +1,5 @@
 package com.xebia.fs101.xtable;
 
-import com.xebia.fs101.xtable.layout_manager.HorizontalLayout;
 import com.xebia.fs101.xtable.layout_manager.LayoutTemplate;
 import com.xebia.fs101.xtable.layout_manager.TableLayout;
 import com.xebia.fs101.xtable.layout_manager.TableLayoutFactory;
@@ -29,8 +28,8 @@ public class Table {
         renderer = new ConsoleBaseRenderer();
         rows = builder.rows;
         headers = builder.headers;
-        if(builder.layoutTemplate==null)
-             layoutTemplate=builder.withLayoutOption(HORIZONTAL).layoutTemplate;
+        if (builder.layoutTemplate == null)
+            layoutTemplate = builder.withLayoutOption(HORIZONTAL).layoutTemplate;
         else
             layoutTemplate = builder.layoutTemplate;
         columnWidth = builder.columnWidth;
@@ -96,9 +95,11 @@ public class Table {
 
         public Builder withLayoutOption(TableLayout tableLayout) {
             if (columnWidth != null && columnWidth.length > 0)
-                layoutTemplate = TableLayoutFactory.getLayoutManager(tableLayout, rowCount, colCount, columnWidth);
+                layoutTemplate = TableLayoutFactory.getLayoutManager(tableLayout,
+                        rowCount, colCount, columnWidth);
             else
-                layoutTemplate = TableLayoutFactory.getLayoutManager(tableLayout, rowCount, colCount);
+                layoutTemplate = TableLayoutFactory.getLayoutManager(tableLayout,
+                        rowCount, colCount);
             return this;
         }
 

@@ -21,38 +21,35 @@ public class HorizontalLayout extends LayoutTemplate {
     }
 
 
-     protected void validate(List<String[]> rows) {
+    protected void validate(List<String[]> rows) {
         validate();
         if (rows != null && rows.size() != rowCount)
             throw new IllegalArgumentException("Please pass according to the number of rows");
         if (rows != null) {
-            for (String cells[] : rows) {
+            for (String[] cells : rows) {
                 if (cells.length != colCount)
-                    throw new IllegalArgumentException("Please pass according to the number of rows");
+                    throw new IllegalArgumentException("Please pass according to the no of rows");
             }
         }
     }
-    protected List<String[]> initializeRows(List<String[]> rows)
-    {
-        if (rows==null || rows.size() == 0) {
-            rows=new ArrayList<>();
+
+    protected List<String[]> initializeRows(List<String[]> rows) {
+        if (rows == null || rows.size() == 0) {
+            rows = new ArrayList<>();
             for (int i = 0; i < rowCount; i++) {
                 String[] cols = new String[colCount];
                 Arrays.fill(cols, "");
                 rows.add(cols);
             }
 
-        }
-        else if(rows.size()==1)// for only headers
-        {
+        } else if (rows.size() == 1) {
             for (int i = 1; i < rowCount; i++) {
                 String[] cols = new String[colCount];
                 Arrays.fill(cols, "");
                 rows.add(cols);
             }
-        }
-        else
-            rows=rows;
+        } else
+            rows = rows;
         return rows;
 
     }
@@ -65,17 +62,19 @@ public class HorizontalLayout extends LayoutTemplate {
             tableData.append("\n");
             for (int j = 0; j < colCount; j++) {
                 if (!(rows.get(i)[j].length() < columnWidths[j] - 1)) {
-                    if(i==0)
-                    currentData = replaceWith(rows.get(i)[j], columnWidths[j] - 1).toUpperCase();
+                    if (i == 0)
+                        currentData = replaceWith(rows.get(i)[j],
+                                columnWidths[j] - 1).toUpperCase();
                     else
                         currentData = replaceWith(rows.get(i)[j], columnWidths[j] - 1);
                     tableData.append(createCellWithData(currentData, columnWidths[j]));
-                  } else
-                {
-                    if(i==0)
-                        tableData.append(createCellWithData(rows.get(i)[j].toUpperCase(), columnWidths[j]));
+                } else {
+                    if (i == 0)
+                        tableData.append(createCellWithData(rows.get(i)[j].toUpperCase(),
+                                columnWidths[j]));
                     else
-                        tableData.append(createCellWithData(rows.get(i)[j], columnWidths[j]));
+                        tableData.append(createCellWithData(rows.get(i)[j],
+                                columnWidths[j]));
 
                 }
 
@@ -87,6 +86,4 @@ public class HorizontalLayout extends LayoutTemplate {
         return tableData.toString();
 
     }
-
-
 }
