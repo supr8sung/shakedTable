@@ -31,13 +31,15 @@ public class VerticalLayout extends LayoutTemplate {
                         currentData = replaceWith(data.get(j)[i],
                                 columnWidths[j] - 1).toUpperCase();
                     else
-                        currentData = replaceWith(data.get(j)[i], columnWidths[j] - 1);
+                        currentData = replaceWith(data.get(j)[i],
+                                columnWidths[j] - 1);
                     tableData.append(createCellWithData(currentData, columnWidths[j]));
                 } else if (j == 0)
                     tableData.append(createCellWithData(data.get(j)[i].toUpperCase(),
                             columnWidths[j]));
                 else
-                    tableData.append(createCellWithData(data.get(j)[i], columnWidths[j]));
+                    tableData.append(createCellWithData(data.get(j)[i],
+                            columnWidths[j]));
             }
             tableData.append(VERTICAL_SEPARATOR);
             if (i != rowCount - 1)
@@ -49,7 +51,7 @@ public class VerticalLayout extends LayoutTemplate {
     protected void validate(List<String[]> rows) {
         validate();
         if (rows != null && rows.size() != colCount)
-            throw new IllegalArgumentException("Please pass according to the number of cols");
+            throw new IllegalArgumentException("Please pass according to the no of cols");
         if (rows != null) {
             for (String[] cells : rows) {
                 if (cells.length != rowCount)
@@ -79,3 +81,4 @@ public class VerticalLayout extends LayoutTemplate {
 
     }
 }
+

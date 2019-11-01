@@ -70,7 +70,7 @@ public class VerticalLayoutTest {
     }
 
     @Test
-    public void hould_create_table_with_data_rows() {
+    public void should_create_table_with_data_rows() {
         LayoutTemplate verticalLayoutTemplate = new VerticalLayout(3, 4, new int[]{15, 15, 15, 15});
         String[] headers = {"Name", "Marks", "Subject"};
         String[] row1 = {"Trump", "10", "Math"};

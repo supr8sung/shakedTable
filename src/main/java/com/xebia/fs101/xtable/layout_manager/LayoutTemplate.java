@@ -18,9 +18,9 @@ import static com.xebia.fs101.xtable.layout_manager.TableConstants.TRUNCATING_CH
 import static com.xebia.fs101.xtable.layout_manager.TableConstants.VERTICAL_SEPARATOR;
 
 public abstract class LayoutTemplate {
-    protected int rowCount;
-    protected int colCount;
-    protected int[] columnWidths;
+    int rowCount;
+    int colCount;
+    int[] columnWidths;
     protected List<String[]> rows;
 
 
@@ -36,7 +36,7 @@ public abstract class LayoutTemplate {
 
     protected abstract List<String[]> initializeRows(List<String[]> rows);
 
-    protected String createTopLine() {
+    private String createTopLine() {
         StringBuilder top = new StringBuilder();
         top.append(TOP_LEFT);
         for (int i = 0; i < colCount; i++) {
@@ -51,7 +51,7 @@ public abstract class LayoutTemplate {
 
     }
 
-    protected String createBottomLine() {
+    private String createBottomLine() {
         StringBuilder bottom = new StringBuilder();
         bottom.append("\n");
         bottom.append(BOTTOM_LEFT);
@@ -66,7 +66,7 @@ public abstract class LayoutTemplate {
         return bottom.toString();
     }
 
-    protected String createRowSeparator() {
+    String createRowSeparator() {
         StringBuilder rowSeparator = new StringBuilder();
         rowSeparator.append("\n" + LEFT_MID);
         for (int i = 0; i < colCount; i++) {
@@ -80,19 +80,19 @@ public abstract class LayoutTemplate {
         return rowSeparator.toString();
     }
 
-    protected void validate() {
+    void validate() {
         if (rowCount < 0 || colCount < 0)
             throw new IllegalArgumentException("Rows and columns should be greater than 0");
     }
 
-    protected String replaceWith(String currentData, int colWidth) {
+    String replaceWith(String currentData, int colWidth) {
         String trimData = currentData.substring(0, colWidth - 3);
         StringBuilder data = new StringBuilder(trimData);
         data.append(TRUNCATING_CHARACTERS);
         return data.toString();
     }
 
-    protected StringBuilder createCellWithData(String data, int colWidth) {
+    StringBuilder createCellWithData(String data, int colWidth) {
         StringBuilder cellData = new StringBuilder();
         cellData.append(VERTICAL_SEPARATOR + SPACING_CHARACTERS);
         int spaceLeft = colWidth - data.length();
@@ -104,7 +104,7 @@ public abstract class LayoutTemplate {
         return cellData;
     }
 
-    protected int[] initializeColWidths() {
+    int[] initializeColWidths() {
         validate();
         columnWidths = new int[colCount];
         for (int i = 0; i < colCount; i++) {
@@ -113,7 +113,7 @@ public abstract class LayoutTemplate {
         return columnWidths;
     }
 
-    protected int[] setColumnWidthToDefaultForLessThan5(int[] colWidth) {
+    int[] setColumnWidthToDefaultForLessThan5(int[] colWidth) {
         for (int i = 0; i < colCount; i++) {
             if (colWidth[i] < 5)
                 colWidth[i] = MAX_COL_WIDTH;
@@ -121,3 +121,4 @@ public abstract class LayoutTemplate {
         return colWidth;
     }
 }
+

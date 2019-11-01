@@ -73,8 +73,7 @@ public class HorizontalLayout extends LayoutTemplate {
                         tableData.append(createCellWithData(rows.get(i)[j].toUpperCase(),
                                 columnWidths[j]));
                     else
-                        tableData.append(createCellWithData(rows.get(i)[j],
-                                columnWidths[j]));
+                        tableData.append(createCellWithData(rows.get(i)[j], columnWidths[j]));
 
                 }
 

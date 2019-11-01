@@ -77,12 +77,12 @@ public class HorizontalLayoutTest {
         String[] row2 = {"test", "logic", "user"};
         String[] row3 = {"assumption", "great", "reflection"};
         String[] row4 = {"flexible", "pleasant", "wild"};
-        List<String[]> tabledata = new ArrayList<>();
-        tabledata.add(row1);
-        tabledata.add(row2);
-        tabledata.add(row3);
-        tabledata.add(row4);
-        String actualResult = horizontalLayoutTemplate.createTable(tabledata);
+        List<String[]> tableData = new ArrayList<>();
+        tableData.add(row1);
+        tableData.add(row2);
+        tableData.add(row3);
+        tableData.add(row4);
+        String actualResult = horizontalLayoutTemplate.createTable(tableData);
         String expectedResult =
                         "┌───────────────────┬───────────────────┬───────────────────┐\n" +
                         "│ ONE               │ TWO               │ THREE             │\n" +
@@ -103,12 +103,12 @@ public class HorizontalLayoutTest {
         String[] row2 = {"test", "logic", "user"};
         String[] row3 = {"assumption", "great", "reflection"};
         String[] row4 = {"flexible", "pleasant", "wild"};
-        List<String[]> tabledata = new ArrayList<>();
-        tabledata.add(row1);
-        tabledata.add(row2);
-        tabledata.add(row3);
-        tabledata.add(row4);
-        String actualResult = horizontalLayoutTemplate.createTable(tabledata);
+        List<String[]> tableData = new ArrayList<>();
+        tableData.add(row1);
+        tableData.add(row2);
+        tableData.add(row3);
+        tableData.add(row4);
+        String actualResult = horizontalLayoutTemplate.createTable(tableData);
         String expectedResult =
                         "┌───────────────────┬───────────────────────────────────────┬───────────────────────────────────────────────────────────┐\n" +
                         "│ ONE               │ TWO                                   │ THREE                                                     │\n" +
@@ -144,11 +144,11 @@ public class HorizontalLayoutTest {
         String[] row1 = {"test", "logic", "user"};
         String[] row2 = {"assumption", "great", "reflection"};
         String[] row3 = {"flexible", "pleasant", "wild"};
-        List<String[]> tabledata = new ArrayList<>();
-        tabledata.add(row1);
-        tabledata.add(row2);
-        tabledata.add(row3);
-        String actualResult = horizontalLayoutTemplate.createTable(tabledata);
+        List<String[]> tableData = new ArrayList<>();
+        tableData.add(row1);
+        tableData.add(row2);
+        tableData.add(row3);
+        String actualResult = horizontalLayoutTemplate.createTable(tableData);
         String expectedResult =
                         "┌─────────┬───────────────────┬─────────┐\n" +
                         "│ TEST    │ LOGIC             │ USER    │\n" +
