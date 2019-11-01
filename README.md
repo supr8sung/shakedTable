@@ -6,5 +6,5 @@ CODECOV
 
 CircleCI
 
-[![CircleCI](https://circleci.com/gh/supr8sung/yourTable/svg?style=svg&circle-token=e357f8f002725f4d0d18cc2ca0fa1fd6f44cba03)](https://circleci.com/gh/suprs8sung/shakedTable)   
+[![CircleCI](https://circleci.com/gh/supr8sung/yourTable/svg?style=svg&circle-token=e357f8f002725f4d0d18cc2ca0fa1fd6f44cba03)](https://circleci.com/gh/supr8sung/shakedTable)   
 
