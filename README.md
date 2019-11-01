@@ -2,8 +2,7 @@
 
 CODECOV
 
-[![codecov](https://codecov.io/gh/SugandhaSapra/xtable/branch/master/graph/badge.svg?token=U224d7dx98)](https://codecov.io/gh/SugandhaSapra/xtable)
-
+[![codecov](https://codecov.io/gh/supr8sung/shakedTable/branch/master/graph/badge.svg?token=YH2FP26q9s)](https://codecov.io/gh/supr8sung/shakedTable)
 CircleCI
 
 
