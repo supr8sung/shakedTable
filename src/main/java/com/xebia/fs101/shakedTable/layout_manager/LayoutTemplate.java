@@ -2,20 +2,7 @@ package com.xebia.fs101.shakedTable.layout_manager;
 
 import java.util.List;
 
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.BOTTOM_LEFT;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.BOTTOM_MIDDLE;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.BOTTOM_RIGHT;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.LEFT_MID;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.MAX_COL_WIDTH;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.MID;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.MID_MID;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.RIGHT_MID;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.SPACING_CHARACTERS;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.TOP_LEFT;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.TOP_MIDDLE;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.TOP_RIGHT;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.TRUNCATING_CHARACTERS;
-import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.VERTICAL_SEPARATOR;
+import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.*;
 
 public abstract class LayoutTemplate {
     int rowCount;

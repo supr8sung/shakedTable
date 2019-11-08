@@ -1,5 +1,6 @@
 package com.xebia.fs101.shakedTable.layout_manager;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,17 +9,22 @@ import static com.xebia.fs101.shakedTable.layout_manager.TableConstants.VERTICAL
 
 public class HorizontalLayout extends LayoutTemplate {
 
+
+
     public HorizontalLayout(int rowCount, int colCount, int[] colWidth) {
+
         this.rowCount = rowCount;
         this.colCount = colCount;
         this.columnWidths = setColumnWidthToDefaultForLessThan5(colWidth);
     }
 
-    public HorizontalLayout(int rowCount, int colCount) {
+    public HorizontalLayout(int rowCount, int colCount){
         this.rowCount = rowCount;
         this.colCount = colCount;
         this.columnWidths = initializeColWidths();
     }
+
+
 
 
     protected void validate(List<String[]> rows) {

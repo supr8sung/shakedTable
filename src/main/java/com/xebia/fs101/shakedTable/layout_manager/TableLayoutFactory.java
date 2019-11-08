@@ -6,8 +6,7 @@ public class TableLayoutFactory {
     private TableLayoutFactory() {
     }
 
-    public static LayoutTemplate getLayoutManager(TableLayout tableLayout,
-                                                  int rowCount, int colCount) {
+    public static LayoutTemplate getLayoutManager(TableLayout tableLayout, int rowCount, int colCount)  {
         if (tableLayout == VERTICAL) {
             return new VerticalLayout(rowCount, colCount);
         }
